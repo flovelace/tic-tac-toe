@@ -1,4 +1,5 @@
 import math
+from multiprocessing.sharedctypes import Value
 import random
 
 class Player:
@@ -25,4 +26,16 @@ class HumanPlayer(Player):
         valid_square = False
         val = None
         while not valid_square:
-            square = input(self.letter + '/')
+            square = input(self.letter + '\'s turn. Input move (0-9):')
+            # this is going to check that this is value by trying to cast
+            # it to an integer, and it's not, then we say that it's invalid
+            # if that spot is not available on the board, we will also say that it's invalid
+            try:
+                value = int(square)
+                if value not in game.available_moves():
+                    raise ValueError
+                valid_square = True
+            except ValueError:
+                print('Invalid square. Try again.')
+        
+        return val
