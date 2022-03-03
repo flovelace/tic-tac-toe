@@ -73,14 +73,13 @@ def play(game, x_player, o_player, print_game=True):
            if print_game:
                print(letter + f' makes a move to square {square}')
                game.print_board()
-               print('') # an empty line
-               
+               print('')
+                             
             if game.current_winner:
                 if print_game:
                     print(letter + ' wins!')
                 return letter
 
-            # after move is made, alternate letters
             letter = 'O' if letter == 'X' else 'X' # switch player
         
         if print_game:

@@ -1,6 +1,4 @@
 import math
-from multiprocessing.sharedctypes import Value
-import random
 
 class Player:
     def __init__(self, letter): # letter is x or o
